@@ -78,6 +78,12 @@
     <Compile Include="AddOrders.Designer.cs">
       <DependentUpon>AddOrders.cs</DependentUpon>
     </Compile>
+    <Compile Include="AddStaff.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddStaff.Designer.cs">
+      <DependentUpon>AddStaff.cs</DependentUpon>
+    </Compile>
     <Compile Include="ARMDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -126,6 +132,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AddOrders.resx">
       <DependentUpon>AddOrders.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AddStaff.resx">
+      <DependentUpon>AddStaff.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Clients.resx">
       <DependentUpon>Clients.cs</DependentUpon>
