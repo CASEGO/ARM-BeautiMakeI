@@ -23,5 +23,10 @@ namespace ARM_BeautiMake
             this.отзывыTableAdapter.Fill(this.aRMDataSet.Отзывы);
 
         }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

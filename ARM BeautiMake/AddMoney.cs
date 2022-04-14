@@ -26,54 +26,33 @@ namespace ARM_BeautiMake
     //⣿⣿⣿⣿⣿⣿⣿⣄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣿⣿⣿
     //⣿⣿⣿⣿⣿⣿⣿⣿⣷⣦⣄⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣤⣾⣿⣿⣿
     //⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣶⣶⣶⣶⣶⣶⣶⣶⣶⣶⣿⣿⣿⣿⣿⣿
-    public partial class Money : Form
+    public partial class AddMoney : Form
     {
-        public static string connectString = "Provider = Microsoft.ACE.OLEDB.12.0; Data Source = ARM.mdb";
+        public static string connectString = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source= ARM.mdb";
         private OleDbConnection myConnection;
-        public Money()
+        public AddMoney()
         {
             InitializeComponent();
             myConnection = new OleDbConnection(connectString);
             myConnection.Open();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void button2_Click(object sender, EventArgs e)
         {
             this.Close();
         }
 
-        private void button2_Click(object sender, EventArgs e)
-        {
-            AddMoney af = new AddMoney();
-            af.Owner = this;
-            af.Show();
-        }
-
-        private void button4_Click(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e)
         {
             int kod = Convert.ToInt32(textBox1.Text);
-            string query = "DELETE FROM Выручка WHERE [Код] = " + kod;
+            string Time = textBox2.Text;
+            string Money = textBox3.Text;
+            string Name = textBox4.Text;
+            string query = "INSERT INTO Выручка ([Код],[Дата],[Выручка],[Менеджер]) VALUES (" + kod + ",'" + Time + "','" + Money + "', '" + Name + "')";
             OleDbCommand command = new OleDbCommand(query, myConnection);
             command.ExecuteNonQuery();
-            MessageBox.Show("Данные обновлены!");
-            dataGridView1.DataSource = выручкаBindingSource;
-            this.выручкаTableAdapter.Fill(this.aRMDataSet.Выручка);
-            textBox1.Clear();
-        }
-
-        private void Money_Load(object sender, EventArgs e)
-        {
-            // TODO: данная строка кода позволяет загрузить данные в таблицу "aRMDataSet.Выручка". При необходимости она может быть перемещена или удалена.
-            this.выручкаTableAdapter.Fill(this.aRMDataSet.Выручка);
-
-        }
-
-        private void Money_Activated(object sender, EventArgs e)
-        {
-            myConnection = new OleDbConnection(connectString);
-            myConnection.Open();
-            dataGridView1.DataSource = выручкаBindingSource;
-            this.выручкаTableAdapter.Fill(this.aRMDataSet.Выручка);
+            MessageBox.Show("Отчет добавлен!");
+            this.Close();
         }
     }
 }
