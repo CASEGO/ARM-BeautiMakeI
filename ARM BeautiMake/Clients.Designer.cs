@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.button2 = new System.Windows.Forms.Button();
             this.textBox2 = new System.Windows.Forms.TextBox();
@@ -40,9 +41,18 @@
             this.button1 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.aRMDataSet = new ARM_BeautiMake.ARMDataSet();
+            this.клиентыBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.клиентыTableAdapter = new ARM_BeautiMake.ARMDataSetTableAdapters.КлиентыTableAdapter();
+            this.кодКлиентаDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.номерЗаказаDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.фИОDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.телефонDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox3.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.aRMDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.клиентыBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox3
@@ -68,6 +78,7 @@
             this.button2.TabIndex = 16;
             this.button2.Text = "Выход в меню";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // textBox2
             // 
@@ -96,6 +107,7 @@
             this.button5.TabIndex = 6;
             this.button5.Text = "Удалить";
             this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // groupBox1
             // 
@@ -151,6 +163,7 @@
             this.button1.TabIndex = 1;
             this.button1.Text = "Найти Клиента";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // button4
             // 
@@ -161,15 +174,61 @@
             this.button4.TabIndex = 5;
             this.button4.Text = "К списку";
             this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // dataGridView1
             // 
+            this.dataGridView1.AutoGenerateColumns = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.кодКлиентаDataGridViewTextBoxColumn,
+            this.номерЗаказаDataGridViewTextBoxColumn,
+            this.фИОDataGridViewTextBoxColumn,
+            this.телефонDataGridViewTextBoxColumn});
+            this.dataGridView1.DataSource = this.клиентыBindingSource;
             this.dataGridView1.Location = new System.Drawing.Point(12, 12);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.Size = new System.Drawing.Size(578, 288);
             this.dataGridView1.TabIndex = 16;
+            // 
+            // aRMDataSet
+            // 
+            this.aRMDataSet.DataSetName = "ARMDataSet";
+            this.aRMDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // клиентыBindingSource
+            // 
+            this.клиентыBindingSource.DataMember = "Клиенты";
+            this.клиентыBindingSource.DataSource = this.aRMDataSet;
+            // 
+            // клиентыTableAdapter
+            // 
+            this.клиентыTableAdapter.ClearBeforeFill = true;
+            // 
+            // кодКлиентаDataGridViewTextBoxColumn
+            // 
+            this.кодКлиентаDataGridViewTextBoxColumn.DataPropertyName = "Код клиента";
+            this.кодКлиентаDataGridViewTextBoxColumn.HeaderText = "Код клиента";
+            this.кодКлиентаDataGridViewTextBoxColumn.Name = "кодКлиентаDataGridViewTextBoxColumn";
+            // 
+            // номерЗаказаDataGridViewTextBoxColumn
+            // 
+            this.номерЗаказаDataGridViewTextBoxColumn.DataPropertyName = "Номер заказа";
+            this.номерЗаказаDataGridViewTextBoxColumn.HeaderText = "Номер заказа";
+            this.номерЗаказаDataGridViewTextBoxColumn.Name = "номерЗаказаDataGridViewTextBoxColumn";
+            // 
+            // фИОDataGridViewTextBoxColumn
+            // 
+            this.фИОDataGridViewTextBoxColumn.DataPropertyName = "ФИО";
+            this.фИОDataGridViewTextBoxColumn.HeaderText = "ФИО";
+            this.фИОDataGridViewTextBoxColumn.Name = "фИОDataGridViewTextBoxColumn";
+            // 
+            // телефонDataGridViewTextBoxColumn
+            // 
+            this.телефонDataGridViewTextBoxColumn.DataPropertyName = "Телефон";
+            this.телефонDataGridViewTextBoxColumn.HeaderText = "Телефон";
+            this.телефонDataGridViewTextBoxColumn.Name = "телефонDataGridViewTextBoxColumn";
             // 
             // Clients
             // 
@@ -181,11 +240,14 @@
             this.Controls.Add(this.dataGridView1);
             this.Name = "Clients";
             this.Text = "Clients";
+            this.Load += new System.EventHandler(this.Clients_Load);
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.aRMDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.клиентыBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -204,5 +266,12 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.DataGridView dataGridView1;
+        private ARMDataSet aRMDataSet;
+        private System.Windows.Forms.BindingSource клиентыBindingSource;
+        private ARMDataSetTableAdapters.КлиентыTableAdapter клиентыTableAdapter;
+        private System.Windows.Forms.DataGridViewTextBoxColumn кодКлиентаDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn номерЗаказаDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn фИОDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn телефонDataGridViewTextBoxColumn;
     }
 }
