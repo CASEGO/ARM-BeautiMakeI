@@ -28,9 +28,19 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.button3 = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.aRMDataSet = new ARM_BeautiMake.ARMDataSet();
+            this.отзывыBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.отзывыTableAdapter = new ARM_BeautiMake.ARMDataSetTableAdapters.ОтзывыTableAdapter();
+            this.кодDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.фИОDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.отзывDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.датаDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.aRMDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.отзывыBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // button3
@@ -45,12 +55,57 @@
             // 
             // dataGridView1
             // 
+            this.dataGridView1.AutoGenerateColumns = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.кодDataGridViewTextBoxColumn,
+            this.фИОDataGridViewTextBoxColumn,
+            this.отзывDataGridViewTextBoxColumn,
+            this.датаDataGridViewTextBoxColumn});
+            this.dataGridView1.DataSource = this.отзывыBindingSource;
             this.dataGridView1.Location = new System.Drawing.Point(12, 12);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.Size = new System.Drawing.Size(588, 253);
             this.dataGridView1.TabIndex = 5;
+            // 
+            // aRMDataSet
+            // 
+            this.aRMDataSet.DataSetName = "ARMDataSet";
+            this.aRMDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // отзывыBindingSource
+            // 
+            this.отзывыBindingSource.DataMember = "Отзывы";
+            this.отзывыBindingSource.DataSource = this.aRMDataSet;
+            // 
+            // отзывыTableAdapter
+            // 
+            this.отзывыTableAdapter.ClearBeforeFill = true;
+            // 
+            // кодDataGridViewTextBoxColumn
+            // 
+            this.кодDataGridViewTextBoxColumn.DataPropertyName = "Код";
+            this.кодDataGridViewTextBoxColumn.HeaderText = "Код";
+            this.кодDataGridViewTextBoxColumn.Name = "кодDataGridViewTextBoxColumn";
+            // 
+            // фИОDataGridViewTextBoxColumn
+            // 
+            this.фИОDataGridViewTextBoxColumn.DataPropertyName = "ФИО";
+            this.фИОDataGridViewTextBoxColumn.HeaderText = "ФИО";
+            this.фИОDataGridViewTextBoxColumn.Name = "фИОDataGridViewTextBoxColumn";
+            // 
+            // отзывDataGridViewTextBoxColumn
+            // 
+            this.отзывDataGridViewTextBoxColumn.DataPropertyName = "Отзыв";
+            this.отзывDataGridViewTextBoxColumn.HeaderText = "Отзыв";
+            this.отзывDataGridViewTextBoxColumn.Name = "отзывDataGridViewTextBoxColumn";
+            // 
+            // датаDataGridViewTextBoxColumn
+            // 
+            this.датаDataGridViewTextBoxColumn.DataPropertyName = "Дата";
+            this.датаDataGridViewTextBoxColumn.HeaderText = "Дата";
+            this.датаDataGridViewTextBoxColumn.Name = "датаDataGridViewTextBoxColumn";
             // 
             // FeedBacks
             // 
@@ -61,7 +116,10 @@
             this.Controls.Add(this.dataGridView1);
             this.Name = "FeedBacks";
             this.Text = "FeedBacks";
+            this.Load += new System.EventHandler(this.FeedBacks_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.aRMDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.отзывыBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -70,5 +128,12 @@
 
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.DataGridView dataGridView1;
+        private ARMDataSet aRMDataSet;
+        private System.Windows.Forms.BindingSource отзывыBindingSource;
+        private ARMDataSetTableAdapters.ОтзывыTableAdapter отзывыTableAdapter;
+        private System.Windows.Forms.DataGridViewTextBoxColumn кодDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn фИОDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn отзывDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn датаDataGridViewTextBoxColumn;
     }
 }
