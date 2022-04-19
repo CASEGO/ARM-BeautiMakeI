@@ -151,6 +151,7 @@
             this.Controls.Add(this.label1);
             this.Name = "AddMoney";
             this.Text = "AddMoney";
+            this.Load += new System.EventHandler(this.AddMoney_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

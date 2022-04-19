@@ -173,6 +173,7 @@
             this.Controls.Add(this.label1);
             this.Name = "AddOrders";
             this.Text = "AddOrders";
+            this.Load += new System.EventHandler(this.AddOrders_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
